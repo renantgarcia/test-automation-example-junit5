@@ -5,17 +5,16 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 import io.restassured.RestAssured;
+import net.serenitybdd.annotations.Steps;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
 public class SomeClass {
 
   public static final Logger logger = LogManager.getLogger(SomeClass.class);
-  private final Context context;
 
-  public SomeClass(Context context) {
-    this.context = context;
-  }
+  @Steps(shared = true)
+  Context context;
 
   @Given("I am who I am")
   public void func1() {
