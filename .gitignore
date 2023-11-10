@@ -1,0 +1,14 @@
+.vscode/
+.idea/
+*.iws
+*.iml
+*.ipr
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+target/
+logs/test_automation_example.log
+reports/serenity/*

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info" name="XMLConfigTest">
+    <ThresholdFilter level="info"/>
+    <Appenders>
+        <Console name="CONSOLE1">
+            <PatternLayout disableAnsi="false">
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}{GMT+0} | %m %n</pattern>
+            </PatternLayout>
+            <MarkerFilter marker="SIMPLE" onMatch="ACCEPT" onMismatch="DENY"/>
+        </Console>
+        <Console name="CONSOLE2">
+            <PatternLayout disableAnsi="false">
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}{GMT+0} | %n %m %n</pattern>
+            </PatternLayout>
+            <MarkerFilter marker="SIMPLE_NEW_LINE" onMatch="ACCEPT" onMismatch="DENY"/>
+        </Console>
+        <Console name="CONSOLE3">
+            <PatternLayout disableAnsi="false">
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}{GMT+0} | %highlight{%-8p{WARN=[WARN], DEBUG=[DEBUG], ERROR=[ERROR], TRACE=[TRACE], INFO=[INFO]}} | %m %n</pattern>
+            </PatternLayout>
+            <MarkerFilter marker="FANCY" onMatch="ACCEPT" onMismatch="DENY"/>
+        </Console>
+        <File name="FILE1" append="false" fileName="logs/test_automation_example.log">
+            <PatternLayout>
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}{GMT+0} | %m %n</pattern>
+            </PatternLayout>
+            <MarkerFilter marker="SIMPLE" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+        <File name="FILE2" append="false" fileName="logs/test_automation_example.log">
+            <PatternLayout>
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}{GMT+0} | %n %m %n</pattern>
+            </PatternLayout>
+            <MarkerFilter marker="SIMPLE_NEW_LINE" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+        <File name="FILE3" append="false" fileName="logs/test_automation_example.log">
+            <PatternLayout>
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}{GMT+0} | %highlight{%-8p{WARN=[WARN], DEBUG=[DEBUG], ERROR=[ERROR], TRACE=[TRACE], INFO=[INFO]}} | [%t] | %C | %F:%L | %m %n</pattern>
+            </PatternLayout>
+            <MarkerFilter marker="FANCY" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="CONSOLE1"/>
+            <AppenderRef ref="CONSOLE2"/>
+            <AppenderRef ref="CONSOLE3"/>
+            <AppenderRef ref="FILE1"/>
+            <AppenderRef ref="FILE2"/>
+            <AppenderRef ref="FILE3"/>
+        </Root>
+    </Loggers>
+</Configuration>
