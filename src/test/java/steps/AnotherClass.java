@@ -1,5 +1,6 @@
 package steps;
 
+import static plugins.StepDetails.stepName;
 import static utils.LogUtils.FANCY;
 import static utils.LogUtils.SIMPLE;
 import static utils.LogUtils.SIMPLE_NEW_LINE;
@@ -18,6 +19,7 @@ public class AnotherClass {
 
   @Then("I am going to use the context")
   public void func6() {
+    System.out.println("Step: " + stepName);
     logger.info(FANCY, "PRINT 4");
     logger.info(SIMPLE_NEW_LINE, context.httpResponse.getBody().asPrettyString());
     logger.info(SIMPLE_NEW_LINE, context.httpResponse.getHeaders().asList());

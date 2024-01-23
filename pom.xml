@@ -9,20 +9,22 @@
     <version>1.0</version>
     <name>Test Automation Example with JUnit 5</name>
 
+    <packaging>jar</packaging>
+
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <bouncycastle.version>1.76</bouncycastle.version>
         <log4j.version>2.20.0</log4j.version>
-        <json.version>20230618</json.version>
+        <json.version>20231013</json.version>
         <rest-assured.version>5.3.2</rest-assured.version>
         <hamcrest.version>2.2</hamcrest.version>
         <junit-vintage.version>5.10.0</junit-vintage.version>
         <junit-jupiter.version>5.10.0</junit-jupiter.version>
         <junit-platform.version>1.10.0</junit-platform.version>
         <cucumber.version>7.14.0</cucumber.version>
-        <serenity.version>4.0.18</serenity.version>
+        <serenity.version>4.0.43</serenity.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.2.1</maven-surefire-plugin.version>
         <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
@@ -145,9 +147,22 @@
 
         <dependency>
             <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite-engine</artifactId>
+            <version>${junit-platform.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-suite-api</artifactId>
             <version>${junit-platform.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.maven.surefire</groupId>
+            <artifactId>surefire-junit-platform</artifactId>
+            <version>3.2.5</version>
         </dependency>
 
         <dependency>
@@ -223,7 +238,7 @@
         </testResources>
 
         <filters>
-            <filter>src/test/resources/filters/filter_${env}.properties</filter>
+            <filter>src/test/resources/resources_filtered/env_${env}.properties</filter>
         </filters>
 
         <plugins>
@@ -272,6 +287,13 @@
                         </goals>
                     </execution>
                 </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.surefire</groupId>
+                        <artifactId>surefire-junit-platform</artifactId>
+                        <version>3.2.5</version>
+                    </dependency>
+                </dependencies>
             </plugin>
 
             <plugin>
