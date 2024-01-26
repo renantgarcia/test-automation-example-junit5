@@ -17,7 +17,7 @@ import org.junit.platform.suite.api.SelectClasspathResource;
 @ExtendWith(SerenityJUnit5Extension.class)
 @SelectPackages({"steps", "environment"})
 @SelectClasspathResource("features")
-@ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "io.cucumber.core.plugin.SerenityReporter, plugins.StepDetails")
+@ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "io.cucumber.core.plugin.SerenityReporter, utils.StepDetails")
 public class CucumberRunner {
 
 }

@@ -1,11 +1,11 @@
 package steps;
 
-import static plugins.StepDetails.stepName;
-import static utils.PropertiesUtils.getProp;
-
-import java.io.IOException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static utils.StepDetails.stepName;
+import static utils.PropertiesUtils.getEnvProp;
 
 import environment.Context;
+import java.io.IOException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
@@ -23,7 +23,7 @@ public class SomeClass {
 
   @Given("I am who I am")
   public void func1() {
-    System.out.println("Step: " + stepName);
+    System.out.println("  Step: Given " + stepName);
     RestAssured.baseURI = "https://timeapi.io";
     context.httpRequest = RestAssured.given();
     System.out.println("PRINT 1");
@@ -31,16 +31,18 @@ public class SomeClass {
 
   @When("I click somewhere")
   public void func2() throws IOException {
-    System.out.println("Step: " + stepName);
+    System.out.println("  Step: When " + stepName);
     context.httpResponse = context.httpRequest.get("/api/TimeZone/AvailableTimeZones");
-    System.out.println("THE ENV IS THIS " + getProp("target/test-classes/env.properties", "env"));
     System.out.println("PRINT 2");
   }
 
-  @Then("Something really amazing happens")
+  @Then("something really amazing happens")
   public void func5() {
-    System.out.println("Step: " + stepName);
-    context.httpResponse.then().assertThat().statusCode(200);
+    System.out.println("  Step: Then " + stepName);
+
+    //context.httpResponse.then().assertThat().statusCode(555);
+    assertEquals(context.httpResponse.statusCode(), 555);
+
     System.out.println("PRINT 3");
   }
 

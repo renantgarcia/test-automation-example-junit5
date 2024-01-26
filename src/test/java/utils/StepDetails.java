@@ -1,4 +1,4 @@
-package plugins;
+package utils;
 
 import io.cucumber.plugin.ConcurrentEventListener;
 import io.cucumber.plugin.event.EventHandler;
