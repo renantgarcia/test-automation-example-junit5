@@ -5,3 +5,8 @@ Feature: First feature
     Given I am who I am
     When I click somewhere
     Then something really amazing happens
+
+  Scenario: Second scenario
+    Given I am who I am
+    When I click somewhere
+    Then something really crappy happens
