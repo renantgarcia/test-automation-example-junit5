@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="info" name="XMLConfigTest">
-    <ThresholdFilter level="info"/>
+    <Properties>
+        <Property name="prop1">example</Property>
+    </Properties>
+    <ThresholdFilter level="trace"/>
     <Appenders>
         <Console name="CONSOLE1">
             <PatternLayout disableAnsi="false">
@@ -16,7 +19,7 @@
         </Console>
         <Console name="CONSOLE3">
             <PatternLayout disableAnsi="false">
-                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}{GMT+0} | %highlight{%-8p{WARN=[WARN], DEBUG=[DEBUG], ERROR=[ERROR], TRACE=[TRACE], INFO=[INFO]}} | %m %n</pattern>
+                <pattern>[%highlight{%p}{FATAL=bold red, ERROR=bold red, WARN=bold yellow, INFO=bold blue, DEBUG=bold magenta, TRACE=bold cyan}]&#x9;| %m %n</pattern>
             </PatternLayout>
             <MarkerFilter marker="FANCY" onMatch="ACCEPT" onMismatch="DENY"/>
         </Console>
@@ -34,13 +37,13 @@
         </File>
         <File name="FILE3" append="false" fileName="logs/test_automation_example.log">
             <PatternLayout>
-                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}{GMT+0} | %highlight{%-8p{WARN=[WARN], DEBUG=[DEBUG], ERROR=[ERROR], TRACE=[TRACE], INFO=[INFO]}} | [%t] | %C | %F:%L | %m %n</pattern>
+                <pattern>[%p]&#x9;| %d{yyyy-MM-dd HH:mm:ss.SSS}{GMT+0} | %m %n</pattern>
             </PatternLayout>
             <MarkerFilter marker="FANCY" onMatch="ACCEPT" onMismatch="DENY"/>
         </File>
     </Appenders>
     <Loggers>
-        <Root level="info">
+        <Root level="trace">
             <AppenderRef ref="CONSOLE1"/>
             <AppenderRef ref="CONSOLE2"/>
             <AppenderRef ref="CONSOLE3"/>

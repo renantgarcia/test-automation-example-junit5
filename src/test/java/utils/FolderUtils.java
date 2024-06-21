@@ -9,16 +9,19 @@ import org.apache.commons.io.FileUtils;
 
 public class FolderUtils {
 
-  public static void emptyReportsFolder() throws IOException {
+  public static void cleanReportsFolder() throws IOException {
     File folder = new File(getSerenityProp("serenity.outputDirectory"));
-    for (File f : Objects.requireNonNull(folder.listFiles())) {
-      if (f.isDirectory()) {
-        FileUtils.cleanDirectory(f);
+    try {
+      for (File f : Objects.requireNonNull(folder.listFiles())) {
+        if (f.isDirectory()) {
+          FileUtils.cleanDirectory(f);
+        }
+        if (!f.getName().equals(".gitkeep")) {
+          f.delete();
+        }
       }
-      if (!f.getName().equals(".gitkeep")) {
-        f.delete();
-      }
+    } catch (NullPointerException e) {
+      System.out.println("The reports folder is empty, nothing to clean");
     }
   }
-
 }

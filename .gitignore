@@ -1,15 +1,7 @@
 .vscode/
 .idea/
 .mvn/
-*.iws
-*.iml
-*.ipr
+reports/serenity/*
 build/
 target/
 logs/*.log
-reports/serenity/*
-nbproject/private/
-nbbuild/
-dist/
-nbdist/
-.nb-gradle/

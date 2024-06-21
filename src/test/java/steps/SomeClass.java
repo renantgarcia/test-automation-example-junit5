@@ -1,7 +1,7 @@
 package steps;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static utils.StepDetails.stepName;
+import static utils.LogUtils.FANCY;
 
 import environment.Context;
 import java.io.IOException;
@@ -10,8 +10,8 @@ import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 import io.restassured.RestAssured;
 import net.serenitybdd.annotations.Steps;
-import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class SomeClass {
 
@@ -22,39 +22,31 @@ public class SomeClass {
 
     @Given("I am who I am")
     public void func1() {
-        System.out.println("  Step: Given " + stepName);
-
         RestAssured.baseURI = "https://timeapi.io";
         context.httpRequest = RestAssured.given();
 
-        System.out.println("PRINT 1");
+        logger.info(FANCY, "End of step");
     }
 
-    @When("I click somewhere")
+    @When("I do something")
     public void func2() throws IOException {
-        System.out.println("  Step: When " + stepName);
-
         context.httpResponse = context.httpRequest.get("/api/TimeZone/AvailableTimeZones");
 
-        System.out.println("PRINT 2");
+        logger.info(FANCY, "End of step");
     }
 
-    @Then("something really amazing happens")
+    @Then("Something happens")
     public void func5() {
-        System.out.println("  Step: Then " + stepName);
-
         assertEquals(200, context.httpResponse.statusCode());
 
-        System.out.println("PRINT 3");
+        logger.info(FANCY, "End of step");
     }
 
-    @Then("something really crappy happens")
+    @Then("Something really amazing happens")
     public void func6() {
-        System.out.println("  Step: Then " + stepName);
+        assertEquals(200, context.httpResponse.statusCode());
 
-        assertEquals(542, 200); //context.httpResponse.statusCode());
-
-        System.out.println("PRINT 4");
+        logger.info(FANCY, "End of step");
     }
 
 }

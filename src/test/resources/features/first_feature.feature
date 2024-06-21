@@ -1,12 +1,14 @@
-@tag1
+@Feature1
 Feature: First feature
 
+  @MainFlow @HappyPath @Smoke @FullRegression
   Scenario: First scenario
     Given I am who I am
-    When I click somewhere
-    Then something really amazing happens
+    When I do something
+    Then Something happens
 
+  @MainFlow @HappyPath @Smoke @FullRegression
   Scenario: Second scenario
     Given I am who I am
-    When I click somewhere
-    Then something really crappy happens
+    When I do something
+    Then Something really amazing happens

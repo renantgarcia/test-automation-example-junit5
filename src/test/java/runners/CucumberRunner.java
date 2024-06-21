@@ -15,9 +15,9 @@ import org.junit.platform.suite.api.SelectClasspathResource;
 @SuiteDisplayName("Test Automation Example with JUnit 5")
 @IncludeEngines("cucumber")
 @ExtendWith(SerenityJUnit5Extension.class)
-@SelectPackages({"steps", "environment"})
+@SelectPackages({"steps", "environment", "utils"})
 @SelectClasspathResource("features")
-@ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "io.cucumber.core.plugin.SerenityReporter, utils.StepDetails")
+@ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "io.cucumber.core.plugin.SerenityReporter, plugins.StepPrinter")
 public class CucumberRunner {
 
 }
